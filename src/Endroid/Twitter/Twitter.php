@@ -61,8 +61,10 @@ class Twitter
             $this->apiUrl = $apiUrl;
         }
 
-        if ($browser) {
+        if (null === $browser) {
             $this->browser = new Browser(new Curl());
+        } else {
+            $this->browser = $browser;
         }
     }
 
