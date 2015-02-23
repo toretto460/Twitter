@@ -46,9 +46,11 @@ class Twitter
      * @param $consumerSecret
      * @param $accessToken
      * @param $accessTokenSecret
+     * @param Browser $browser
+     *
      * @param null $apiUrl
      */
-    public function __construct($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret, $apiUrl = null)
+    public function __construct($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret, $apiUrl = null, Browser $browser = null)
     {
         $this->consumerKey = $consumerKey;
         $this->consumerSecret = $consumerSecret;
@@ -59,7 +61,9 @@ class Twitter
             $this->apiUrl = $apiUrl;
         }
 
-        $this->browser = new Browser(new Curl());
+        if ($browser) {
+            $this->browser = new Browser(new Curl());
+        }
     }
 
     /**
